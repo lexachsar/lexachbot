@@ -1,3 +1,5 @@
+package echo;
+
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -5,9 +7,38 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 import java.util.Scanner;
 
-public class LexachBot extends TelegramLongPollingBot {
+public class EchoBot extends TelegramLongPollingBot {
 
+    private String name;
     private String token;
+
+
+    EchoBot() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Input the name:");
+        this.name = sc.nextLine();
+        System.out.println("Input the token:");
+        this.token = sc.nextLine();
+    }
+
+
+    /**
+     * @return bot username from BotFather
+     * If bot username is @EchoBot, it must return 'EchoBot'
+     */
+    public String getBotUsername() {
+        return this.name;
+    }
+
+    /**
+     * @return bot token from BotFather
+     */
+    @Override
+    public String getBotToken() {
+        return this.token;
+    }
+
 
     public void onUpdateReceived(Update update) {
 
@@ -26,29 +57,5 @@ public class LexachBot extends TelegramLongPollingBot {
                 e.printStackTrace();
             }
         }
-    }
-
-    /**
-     * @return Return bot username
-     * If bot username is @LexachBot, it must return 'LexachBot'
-     */
-    public String getBotUsername() {
-        return "lexachbot";
-    }
-
-    @Override
-    public String getBotToken() {
-        // Return bot token from BotFather
-        return this.token;
-    }
-
-    LexachBot(String token) {
-        this.token = token;
-    }
-
-    LexachBot() {
-        System.out.println("Input the token:");
-        Scanner sc = new Scanner(System.in);
-        token = sc.nextLine();
     }
 }

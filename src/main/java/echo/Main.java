@@ -1,3 +1,6 @@
+package echo;
+
+import echo.EchoBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -12,7 +15,7 @@ public class Main {
 
         // Register our bot
         try {
-            botsApi.registerBot(new LexachBot());
+            botsApi.registerBot(new EchoBot());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

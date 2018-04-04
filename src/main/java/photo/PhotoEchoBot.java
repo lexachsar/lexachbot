@@ -11,12 +11,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-public class PhotoBot extends TelegramLongPollingBot {
+/**
+ * Sends to user info about his photo.
+ */
+public class PhotoEchoBot extends TelegramLongPollingBot {
 
     private String name;
     private String token;
 
-    PhotoBot() {
+    PhotoEchoBot() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Input the name:");
